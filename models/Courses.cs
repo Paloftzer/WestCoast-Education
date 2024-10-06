@@ -15,5 +15,17 @@ public class Courses
         Length = length;
         StartDate = startDate;
         EndDate = endDate;
+
+        // Append the new course to a json file
+    }
+
+    public void FindCourse(int courseId)
+    {
+        // Read the json file and search for the course by id and then display it
+    }
+
+    public override string ToString()
+    {
+        return $"{CourseId}{Title}{Length}{StartDate}{EndDate}";
     }
 }
