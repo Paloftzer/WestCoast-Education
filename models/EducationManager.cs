@@ -17,10 +17,10 @@ public class EducationManager : Teacher
 
     public static void ListEducationManagers()
     {
-        List<EducationManager> educationManagers = FileManager.ReadFromFile<EducationManager>();
+        List<EducationManager> EducationManagers = FileManager.ReadFromFile<EducationManager>();
         Console.WriteLine("List of all Education Managers:");
 
-        foreach (var educationManager in educationManagers)
+        foreach (var educationManager in EducationManagers)
         {
             Console.WriteLine(educationManager.ToString());
         }

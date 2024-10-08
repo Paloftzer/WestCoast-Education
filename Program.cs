@@ -26,14 +26,20 @@ public class Program
         // Select specific courses based on their CourseId so that I can assign them to teachers without having to assign EVERY course, in this case specifically the courses with CourseId 1 and 2 I.e Math and Science
         List<Course> specificCourses = allCourses.Where(c => c.CourseId == "1" || c.CourseId == "2").ToList();
 
-        Teacher.AddTeacher(firstName:"Jane", lastName:"Doe", phoneNumber:"0707777777", personalIdentityNumber:"43212211-4321", address:"Eighty-third Street", postalCode:"777 77", city:"Seventeenth City", areaOfKnowledge:"Math", assignedCourses:specificCourses);
+        Teacher.AddTeacher(firstName:"Jane", lastName:"Doe", phoneNumber:"0707777777", personalIdentityNumber:"43212211-4321", address:"Eighty-third Street", postalCode:"777 77", city:"Seventeenth City", areaOfKnowledge:"Math & Science", assignedCourses:specificCourses);
 
         Teacher.ListTeachers();
 
         specificCourses = allCourses.Where(c => c.CourseId == "3").ToList();
 
-        EducationManager.AddEducationManager(firstName:"Jane", lastName:"Doe", phoneNumber:"0707777777", personalIdentityNumber:"43212211-4321", address:"Eighty-third Street", postalCode:"777 77", city:"Seventeenth City", areaOfKnowledge:"Math", assignedCourses:specificCourses, dateOfEmployment:DateTime.Now);
+        EducationManager.AddEducationManager(firstName:"Hjon", lastName:"Doe", phoneNumber:"0703333333", personalIdentityNumber:"11221234-1234", address:"Fifty-second Street", postalCode:"333 33", city:"Forty-first City", areaOfKnowledge:"History", assignedCourses:specificCourses, dateOfEmployment:DateTime.Now);
 
         EducationManager.ListEducationManagers();
+
+        specificCourses = allCourses.Where(c => c.CourseId == "2" || c.CourseId == "3").ToList();
+
+        Administrator.AddAdministrator(firstName:"Jan", lastName:"Doe", phoneNumber:"0709999999", personalIdentityNumber:"22114321-4321", address:"Forty-first Street", postalCode:"999 99", city:"Fifty-second City", areaOfKnowledge:"Science & History", assignedCourses:specificCourses, dateOfEmployment:DateTime.Now);
+
+        Administrator.ListAdministrators();
     }
 }
