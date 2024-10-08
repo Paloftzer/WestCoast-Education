@@ -6,6 +6,6 @@ public class EducationManager : Teacher
 
     public void AddEducationManager()
     {
-        
+
     }
 }
