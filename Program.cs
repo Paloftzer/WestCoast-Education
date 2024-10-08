@@ -7,6 +7,10 @@ public class Program
     static void Main()
     {
         IEntityManager<Course> courseManager = new Course();
+        // IEntityManager<Student> studentManager = new Student();
+        IEntityManager<Teacher> teacherManager = new Teacher();
+        // IEntityManager<EducationManager> educationManager = new EducationManager();
+        // IEntityManager<Administrator> administratorManager = new Administrator();
 
         Course newCourse = new Course
         {
@@ -45,6 +49,29 @@ public class Program
         foreach (var course in allCourses)
         {
             Console.WriteLine(course);
+        }
+
+        List<Course> specificCourses = allCourses.Where(c => c.CourseId == "1" || c.CourseId == "2").ToList();
+
+        Teacher newTeacher = new()
+        {
+            FirstName = "John",
+            LastName = "Doe",
+            PhoneNumber = "0705555555",
+            PersonalIdentityNumber = "12341122-1234",
+            Address = "Seventeenth Street",
+            PostalCode = "555 55",
+            City = "Eighty-third City",
+            AreaOfKnowledge = "Math & Science",
+            AssignedCourses = specificCourses
+        };
+
+        teacherManager.AddEntity(newTeacher);
+
+        List<Teacher> allTeachers = teacherManager.ListEntities();
+        foreach (var teacher in allTeachers)
+        {
+            Console.WriteLine(teacher);
         }
 
         /*
