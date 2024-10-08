@@ -2,33 +2,27 @@
 
 namespace WestCoast_Education.models;
 
-public class EducationManager : Teacher
+public class EducationManager : Teacher, IEntityManager<EducationManager>
 {
     // for comments see Teacher.cs and Course.cs
     public DateTime DateOfEmployment { get; set; }
 
-    public static void AddEducationManager(string firstName, string lastName, string phoneNumber, string personalIdentityNumber, string address, string postalCode, string city, string areaOfKnowledge, List<Course> assignedCourses, DateTime dateOfEmployment)
+    public void AddEntity(EducationManager educationManager)
     {
-        List<EducationManager> EducationManager = FileManager.ReadFromFile<EducationManager>();
-        EducationManager.Add(new EducationManager { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, PersonalIdentityNumber = personalIdentityNumber, Address = address, PostalCode = postalCode, City = city, AreaOfKnowledge = areaOfKnowledge, AssignedCourses = assignedCourses, DateOfEmployment = dateOfEmployment });
+        List<EducationManager> educationManagers = FileManager.ReadFromFile<EducationManager>();
+        educationManagers.Add(educationManager);
 
-        FileManager.WriteToFile(EducationManager);
+        FileManager.WriteToFile(educationManagers);
     }
 
-    public static void ListEducationManagers()
+    public new List<EducationManager> ListEntities()
     {
-        List<EducationManager> EducationManagers = FileManager.ReadFromFile<EducationManager>();
-        Console.WriteLine("List of all Education Managers:");
-
-        foreach (var educationManager in EducationManagers)
-        {
-            Console.WriteLine(educationManager.ToString());
-        }
+        return FileManager.ReadFromFile<EducationManager>();
     }
 
     public override string ToString()
     {
         var courseTitles = string.Join(", ", AssignedCourses.Select(c => c.Title));
-        return $"Name: {FirstName} {LastName}, Address: {Address}, {PostalCode}, {City}, Contact Information: {PhoneNumber} - Area of Knowledge: {AreaOfKnowledge}, Assigned Courses: {courseTitles}, Date of Employment: {DateOfEmployment.ToShortDateString()}";
+        return $"Education Manager Name: {FirstName} {LastName}, Address: {Address}, {PostalCode}, {City}, Contact Information: {PhoneNumber} - Area of Knowledge: {AreaOfKnowledge}, Assigned Courses: {courseTitles}, Date of Employment: {DateOfEmployment.ToShortDateString()}";
     }
 }

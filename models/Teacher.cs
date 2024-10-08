@@ -10,6 +10,7 @@ public class Teacher : Person, IEntityManager<Teacher>
     {
         List<Teacher> teachers = FileManager.ReadFromFile<Teacher>();
         teachers.Add(teacher);
+        
         FileManager.WriteToFile(teachers);
     }
 

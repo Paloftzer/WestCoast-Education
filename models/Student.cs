@@ -7,6 +7,7 @@ public class Student : Person, IEntityManager<Student>
     {
         List<Student> students = FileManager.ReadFromFile<Student>();
         students.Add(student);
+        
         FileManager.WriteToFile(students);
     }
 

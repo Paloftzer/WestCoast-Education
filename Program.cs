@@ -6,11 +6,11 @@ public class Program
 {
     static void Main()
     {
-        IEntityManager<Course> courseManager = new Course();
-        IEntityManager<Student> studentManager = new Student();
-        IEntityManager<Teacher> teacherManager = new Teacher();
-        // IEntityManager<EducationManager> educationManager = new EducationManager();
-        // IEntityManager<Administrator> administratorManager = new Administrator();
+        IEntityManager<Course> courseHandler = new Course();
+        IEntityManager<Student> studentHandler = new Student();
+        IEntityManager<Teacher> teacherHandler = new Teacher();
+        IEntityManager<EducationManager> educationManagerHandler = new EducationManager();
+        IEntityManager<Administrator> administratorHandler = new Administrator();
 
         /* Course Handling */
         Course newCourse = new Course
@@ -22,7 +22,7 @@ public class Program
             EndDate = DateTime.Now.AddDays(70)
         };
 
-        courseManager.AddEntity(newCourse);
+        courseHandler.AddEntity(newCourse);
 
         newCourse = new Course
         {
@@ -33,7 +33,7 @@ public class Program
             EndDate = DateTime.Now.AddDays(56)
         };
 
-        courseManager.AddEntity(newCourse);
+        courseHandler.AddEntity(newCourse);
 
         newCourse = new Course
         {
@@ -44,9 +44,9 @@ public class Program
             EndDate = DateTime.Now.AddDays(42)
         };
 
-        courseManager.AddEntity(newCourse);
+        courseHandler.AddEntity(newCourse);
 
-        List<Course> allCourses = courseManager.ListEntities();
+        List<Course> allCourses = courseHandler.ListEntities();
         foreach (var course in allCourses)
         {
             Console.WriteLine(course);
@@ -64,9 +64,9 @@ public class Program
             City = "Eighty-third City",
         };
 
-        studentManager.AddEntity(newStudent);
+        studentHandler.AddEntity(newStudent);
 
-        List<Student> allStudents = studentManager.ListEntities();
+        List<Student> allStudents = studentHandler.ListEntities();
         foreach (var student in allStudents)
         {
             Console.WriteLine(student);
@@ -82,44 +82,67 @@ public class Program
             PhoneNumber = "0707777777",
             PersonalIdentityNumber = "43212211-4321",
             Address = "Eighty-third Street",
-            PostalCode = "555 55",
+            PostalCode = "777 77",
             City = "Seventeenth City",
             AreaOfKnowledge = "Math & Science",
             AssignedCourses = specificCourses
         };
 
-        teacherManager.AddEntity(newTeacher);
+        teacherHandler.AddEntity(newTeacher);
 
-        List<Teacher> allTeachers = teacherManager.ListEntities();
+        List<Teacher> allTeachers = teacherHandler.ListEntities();
         foreach (var teacher in allTeachers)
         {
             Console.WriteLine(teacher);
         }
 
-        /*
-        Student.AddStudent(firstName:"John", lastName:"Doe", phoneNumber:"0705555555", personalIdentityNumber:"12341122-1234", address:"Seventeenth Street", postalCode:"555 55", city:"Eighty-third City");
-
-        Student.ListStudents();
-
-        // Retrieves a list of all courses
-        List<Course> allCourses = Course.GetAllCourses();
-        // Select specific courses based on their CourseId so that I can assign them to teachers without having to assign EVERY course, in this case specifically the courses with CourseId 1 and 2 I.e Math and Science
-        List<Course> specificCourses = allCourses.Where(c => c.CourseId == "1" || c.CourseId == "2").ToList();
-
-        Teacher.AddTeacher(firstName:"Jane", lastName:"Doe", phoneNumber:"0707777777", personalIdentityNumber:"43212211-4321", address:"Eighty-third Street", postalCode:"777 77", city:"Seventeenth City", areaOfKnowledge:"Math & Science", assignedCourses:specificCourses);
-
-        Teacher.ListTeachers();
-
+        /* EducationManager Handling */
         specificCourses = allCourses.Where(c => c.CourseId == "3").ToList();
 
-        EducationManager.AddEducationManager(firstName:"Hjon", lastName:"Doe", phoneNumber:"0703333333", personalIdentityNumber:"11221234-1234", address:"Fifty-second Street", postalCode:"333 33", city:"Forty-first City", areaOfKnowledge:"History", assignedCourses:specificCourses, dateOfEmployment:DateTime.Now);
+        EducationManager newEducationManager = new()
+        {
+            FirstName = "Hjon", 
+            LastName = "Doe", 
+            PhoneNumber = "0703333333", 
+            PersonalIdentityNumber = "11221234-1234", 
+            Address = "Fifty-second Street", 
+            PostalCode = "333 33", 
+            City = "Forty-first City", 
+            AreaOfKnowledge = "History", 
+            AssignedCourses = specificCourses, 
+            DateOfEmployment = DateTime.Now
+        };
 
-        EducationManager.ListEducationManagers();
+        educationManagerHandler.AddEntity(newEducationManager);
+
+        List<EducationManager> allEducationManagers = educationManagerHandler.ListEntities();
+        foreach (var educationManager in allEducationManagers)
+        {
+            Console.WriteLine(educationManager);
+        }
 
         specificCourses = allCourses.Where(c => c.CourseId == "2" || c.CourseId == "3").ToList();
 
-        Administrator.AddAdministrator(firstName:"Jan", lastName:"Doe", phoneNumber:"0709999999", personalIdentityNumber:"22114321-4321", address:"Forty-first Street", postalCode:"999 99", city:"Fifty-second City", areaOfKnowledge:"Science & History", assignedCourses:specificCourses, dateOfEmployment:DateTime.Now);
+        Administrator newAdministrator = new()
+        {
+            FirstName = "Jan",
+            LastName = "Doe",
+            PhoneNumber = "0709999999",
+            PersonalIdentityNumber = "22114321-4321",
+            Address = "Forty-first Street",
+            PostalCode = "999 99",
+            City = "Fifty-second City",
+            AreaOfKnowledge = "Science & History",
+            AssignedCourses = specificCourses,
+            DateOfEmployment = DateTime.Now
+        };
 
-        Administrator.ListAdministrators(); */
+        administratorHandler.AddEntity(newAdministrator);
+
+        List<Administrator> allAdministrators = administratorHandler.ListEntities();
+        foreach (var administrator in allAdministrators)
+        {
+            Console.WriteLine(administrator);
+        }
     }
 }
