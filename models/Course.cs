@@ -2,30 +2,42 @@
 
 public class Course
 {
-    public int CourseId { get; set; }
+    public string CourseId { get; set; } = "";
     public string Title { get; set; } = "";
-    public int Length { get; set; }
+    public int LengthInWeeks { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
 
-    public void AddCourse(int courseId, string title, int length, DateTime startDate, DateTime endDate)
+    public List<Course> Courses { get; set; } = [];
+
+    public void AddCourse(string courseId, string title, int lengthInWeeks, DateTime startDate, DateTime endDate)
     {
-        CourseId = courseId;
-        Title = title;
-        Length = length;
-        StartDate = startDate;
-        EndDate = endDate;
+        Course newCourse = new()
+        {
+            CourseId = courseId,
+            Title = title,
+            LengthInWeeks = lengthInWeeks,
+            StartDate = startDate,
+            EndDate = endDate,
+        };
+
+        Courses.Add(newCourse);
 
         // Append the new course to a json file
     }
 
     public void ListCourses(int courseId)
     {
-        // Read the json file and search for the course by id and then display it
+        Console.WriteLine("List of available Courses:");
+
+        foreach (var c in Courses)
+        {
+            Console.WriteLine(ToString());
+        }
     }
 
     public override string ToString()
     {
-        return $"{CourseId}{Title}{Length}{StartDate}{EndDate}";
+        return $"CourseID: {CourseId} - Title: {Title} - Length: {LengthInWeeks} weeks - Start Date: {StartDate.ToShortDateString()} - End Date: {EndDate.ToShortDateString()}";
     }
 }
