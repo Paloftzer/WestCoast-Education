@@ -4,19 +4,19 @@ public class Course
 {
     public string CourseId { get; set; } = "";
     public string Title { get; set; } = "";
-    public int LengthInWeeks { get; set; }
+    public int DurationInWeeks { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
 
     public List<Course> Courses { get; set; } = [];
 
-    public void AddCourse(string courseId, string title, int lengthInWeeks, DateTime startDate, DateTime endDate)
+    public void AddCourse(string courseId, string title, int durationInWeeks, DateTime startDate, DateTime endDate)
     {
         Course newCourse = new()
         {
             CourseId = courseId,
             Title = title,
-            LengthInWeeks = lengthInWeeks,
+            DurationInWeeks = durationInWeeks,
             StartDate = startDate,
             EndDate = endDate,
         };
@@ -38,6 +38,6 @@ public class Course
 
     public override string ToString()
     {
-        return $"CourseID: {CourseId} - Title: {Title} - Length: {LengthInWeeks} weeks - Start Date: {StartDate.ToShortDateString()} - End Date: {EndDate.ToShortDateString()}";
+        return $"CourseID: {CourseId} - Title: {Title} - Duration: {DurationInWeeks} weeks - Start Date: {StartDate.ToShortDateString()} - End Date: {EndDate.ToShortDateString()}";
     }
 }
