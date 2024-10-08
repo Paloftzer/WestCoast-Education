@@ -2,6 +2,7 @@
 
 public class Student : Person
 {
+    // for comments see Course.cs it is the original file and most of the other files will be nearly identical
     public void AddStudent(string firstName, string lastName, string phoneNumber, string personalIdentityNumber, string address, string postalCode, string city)
     {
         List<Student> Student = FileManager.ReadFromFile<Student>();

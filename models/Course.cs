@@ -26,10 +26,12 @@ public class Course
 
         foreach (var course in courses)
         {
+            // Writes the course to the console formatted according to the ToString override
             Console.WriteLine(course.ToString());
         }
     }
 
+    // Basic ToString override to display information nicely
     public override string ToString()
     {
         return $"CourseId: {CourseId} - Title: {Title} - Duration {DurationInWeeks} weeks - Start Date: {StartDate.ToShortDateString()} - End Date: {EndDate.ToShortDateString()}";
