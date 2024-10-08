@@ -30,9 +30,9 @@ public class Course
     {
         Console.WriteLine("List of available Courses:");
 
-        foreach (var c in Courses)
+        foreach (var course in Courses)
         {
-            Console.WriteLine(ToString());
+            Console.WriteLine(course.ToString());
         }
     }
 
