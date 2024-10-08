@@ -7,11 +7,12 @@ public class Program
     static void Main()
     {
         IEntityManager<Course> courseManager = new Course();
-        // IEntityManager<Student> studentManager = new Student();
+        IEntityManager<Student> studentManager = new Student();
         IEntityManager<Teacher> teacherManager = new Teacher();
         // IEntityManager<EducationManager> educationManager = new EducationManager();
         // IEntityManager<Administrator> administratorManager = new Administrator();
 
+        /* Course Handling */
         Course newCourse = new Course
         {
             CourseId = "1",
@@ -51,9 +52,8 @@ public class Program
             Console.WriteLine(course);
         }
 
-        List<Course> specificCourses = allCourses.Where(c => c.CourseId == "1" || c.CourseId == "2").ToList();
-
-        Teacher newTeacher = new()
+        /* Student Handling */
+        Student newStudent = new()
         {
             FirstName = "John",
             LastName = "Doe",
@@ -62,6 +62,28 @@ public class Program
             Address = "Seventeenth Street",
             PostalCode = "555 55",
             City = "Eighty-third City",
+        };
+
+        studentManager.AddEntity(newStudent);
+
+        List<Student> allStudents = studentManager.ListEntities();
+        foreach (var student in allStudents)
+        {
+            Console.WriteLine(student);
+        }
+
+        /* Teacher Handling */
+        List<Course> specificCourses = allCourses.Where(c => c.CourseId == "1" || c.CourseId == "2").ToList();
+
+        Teacher newTeacher = new()
+        {
+            FirstName = "Jane",
+            LastName = "Doe",
+            PhoneNumber = "0707777777",
+            PersonalIdentityNumber = "43212211-4321",
+            Address = "Eighty-third Street",
+            PostalCode = "555 55",
+            City = "Seventeenth City",
             AreaOfKnowledge = "Math & Science",
             AssignedCourses = specificCourses
         };
