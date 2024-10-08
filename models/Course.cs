@@ -26,7 +26,7 @@ public class Course
         // Append the new course to a json file
     }
 
-    public void ListCourses(int courseId)
+    public void ListCourses()
     {
         Console.WriteLine("List of available Courses:");
 
