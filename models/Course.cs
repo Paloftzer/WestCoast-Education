@@ -1,6 +1,6 @@
 ﻿namespace WestCoast_Education.models;
 
-public class Courses
+public class Course
 {
     public int CourseId { get; set; }
     public string Title { get; set; } = "";
@@ -19,7 +19,7 @@ public class Courses
         // Append the new course to a json file
     }
 
-    public void FindCourse(int courseId)
+    public void ListCourses(int courseId)
     {
         // Read the json file and search for the course by id and then display it
     }

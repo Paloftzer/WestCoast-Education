@@ -1,6 +1,11 @@
 ﻿namespace WestCoast_Education.models;
 
-public class EducationManager : Teachers
+public class EducationManager : Teacher
 {
-    public string DateOfEmployment { get; set; } = "";
+    public DateTime DateOfEmployment { get; set; }
+
+    public void AddEducationManager()
+    {
+        
+    }
 }

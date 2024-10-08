@@ -2,5 +2,8 @@
 
 public class Administrator : EducationManager
 {
-
+    public void AddAdministrator()
+    {
+        
+    }
 }
