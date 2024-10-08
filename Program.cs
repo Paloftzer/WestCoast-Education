@@ -29,5 +29,11 @@ public class Program
         Teacher.AddTeacher(firstName:"Jane", lastName:"Doe", phoneNumber:"0707777777", personalIdentityNumber:"43212211-4321", address:"Eighty-third Street", postalCode:"777 77", city:"Seventeenth City", areaOfKnowledge:"Math", assignedCourses:specificCourses);
 
         Teacher.ListTeachers();
+
+        specificCourses = allCourses.Where(c => c.CourseId == "3").ToList();
+
+        EducationManager.AddEducationManager(firstName:"Jane", lastName:"Doe", phoneNumber:"0707777777", personalIdentityNumber:"43212211-4321", address:"Eighty-third Street", postalCode:"777 77", city:"Seventeenth City", areaOfKnowledge:"Math", assignedCourses:specificCourses, dateOfEmployment:DateTime.Now);
+
+        EducationManager.ListEducationManagers();
     }
 }
