@@ -31,11 +31,18 @@ public class FileManager
     // Method that writes the information to a .json file with the name generated in GetFilePath
     public static void WriteToFile<T>(List<T> data)
     {
+        try 
+        {
         var json = JsonSerializer.Serialize(data, _writeOptions);
         // Gets the class dependent file path from GetFilePath
         string path = GetFilePath<T>();
 
         File.WriteAllText(path, json);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred while writing to file: {ex.Message}");
+        }
     }
 
     // Method that reads the information stored in the .json file
@@ -50,8 +57,16 @@ public class FileManager
             return [];
         }
 
+        try
+        {
         var json = File.ReadAllText(path);
-        // Deserializes the information from the .json file or returns and empty list incase something fails
+        // Deserializes the information from the .json file or returns an empty list
         return JsonSerializer.Deserialize<List<T>>(json, _readOptions) ?? [];
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred while reading from file: {ex.Message}");
+            return [];
+        }
     }
 }
