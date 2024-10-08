@@ -13,7 +13,7 @@ public class Program
         IEntityManager<Administrator> administratorHandler = new Administrator();
 
         /* Course Handling */
-        Course newCourse = new Course
+        Course newCourse = new()
         {
             CourseId = "1",
             Title = "Math",
