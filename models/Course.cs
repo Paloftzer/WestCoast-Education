@@ -18,6 +18,12 @@ public class Course
         FileManager.WriteToFile(Course);
     }
 
+    // Method to get all courses from the json file and return them as a list specifically needed for assigning courses to teachers
+    public static List<Course> GetAllCourses()
+    {
+        return FileManager.ReadFromFile<Course>();
+    }
+
     public static void ListCourses()
     {
         // Reads existing courses from json file
