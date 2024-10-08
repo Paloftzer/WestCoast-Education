@@ -20,6 +20,7 @@ public class FileManager
     // Had to move the dynamic path to a separate method because otherwise it stopped working and i genuinely don't know why but it works now so
     private static string GetFilePath<T>()
     {
+        // Dynamically generates path depending on what class is calling the method so that I don't have to declare a path variable in every individual class
         string fileName = $"{typeof(T).Name}.json";
         return string.Concat(Environment.CurrentDirectory, "/data/", fileName);
     }
