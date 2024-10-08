@@ -5,6 +5,7 @@ namespace WestCoast_Education.models;
 
 public class FileManager
 {
+    // Probably should've used StreamWriter instead of constantly having to read the information from the file and the re-write all of it back down but I forgot StreamWriter existed and this works
     // Write options for the json Serializer
     private static readonly JsonSerializerOptions _writeOptions = new()
     {
