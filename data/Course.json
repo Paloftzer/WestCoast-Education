@@ -1,0 +1,18 @@
+[
+  {
+    "courseId": "1",
+    "title": "Math",
+    "durationInWeeks": 10,
+    "startDate": "2024-10-08T18:15:39.158648+02:00",
+    "endDate": "2024-12-17T18:15:39.1637032+01:00",
+    "courses": []
+  },
+  {
+    "courseId": "2",
+    "title": "Science",
+    "durationInWeeks": 8,
+    "startDate": "2024-10-08T18:15:39.1637203+02:00",
+    "endDate": "2024-12-03T18:15:39.1637207+01:00",
+    "courses": []
+  }
+]

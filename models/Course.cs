@@ -10,7 +10,7 @@ public class Course
 
     public List<Course> Courses { get; set; } = [];
 
-    public void AddCourse(string courseId, string title, int durationInWeeks, DateTime startDate, DateTime endDate)
+    /* public void AddCourse(string courseId, string title, int durationInWeeks, DateTime startDate, DateTime endDate)
     {
         Course newCourse = new()
         {
@@ -22,11 +22,10 @@ public class Course
         };
 
         Courses.Add(newCourse);
+    } */
 
-        // Append the new course to a json file
-    }
-
-    public void ListCourses()
+    // Will be unnecessary when I've finished implementing reading and writing from and to files
+    /* public void ListCourses()
     {
         Console.WriteLine("List of available Courses:");
 
@@ -39,5 +38,5 @@ public class Course
     public override string ToString()
     {
         return $"CourseID: {CourseId} - Title: {Title} - Duration: {DurationInWeeks} weeks - Start Date: {StartDate.ToShortDateString()} - End Date: {EndDate.ToShortDateString()}";
-    }
+    } */
 }
