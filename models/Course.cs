@@ -8,7 +8,7 @@ public class Course
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
 
-    public void AddCourse(string courseId, string title, int durationInWeeks, DateTime startDate, DateTime endDate)
+    public static void AddCourse(string courseId, string title, int durationInWeeks, DateTime startDate, DateTime endDate)
     {
         // Reads existing courses from json file so that old information doesn't get overwritten
         List<Course> Course = FileManager.ReadFromFile<Course>();
@@ -18,7 +18,7 @@ public class Course
         FileManager.WriteToFile(Course);
     }
 
-    public void ListCourses()
+    public static void ListCourses()
     {
         // Reads existing courses from json file
         List<Course> courses = FileManager.ReadFromFile<Course>();
