@@ -6,17 +6,48 @@ public class Program
 {
     static void Main()
     {
-        Course Course = new();
-        Student Student = new();
-        Teacher Teacher = new();
+        IEntityManager<Course> courseManager = new Course();
 
-        // Yes, I know that the named arguments are unnecessary, but I like doing them because then I don't have to pay as much attention to the order I write them in
-        Course.AddCourse(courseId:"1", title:"Math", durationInWeeks:10, startDate:DateTime.Now, endDate:DateTime.Now.AddDays(70));
-        Course.AddCourse(courseId:"2", title:"Science", durationInWeeks:8, startDate:DateTime.Now, endDate:DateTime.Now.AddDays(56));
-        Course.AddCourse(courseId: "3", title: "History", durationInWeeks: 6, startDate: DateTime.Now, endDate: DateTime.Now.AddDays(42));
+        Course newCourse = new Course
+        {
+            CourseId = "1",
+            Title = "Math",
+            DurationInWeeks = 10,
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(70)
+        };
 
-        Course.ListCourses();
+        courseManager.AddEntity(newCourse);
 
+        newCourse = new Course
+        {
+            CourseId = "2",
+            Title = "Science",
+            DurationInWeeks = 8,
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(56)
+        };
+
+        courseManager.AddEntity(newCourse);
+
+        newCourse = new Course
+        {
+            CourseId = "3",
+            Title = "History",
+            DurationInWeeks = 6,
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(42)
+        };
+
+        courseManager.AddEntity(newCourse);
+
+        List<Course> allCourses = courseManager.ListEntities();
+        foreach (var course in allCourses)
+        {
+            Console.WriteLine(course);
+        }
+
+        /*
         Student.AddStudent(firstName:"John", lastName:"Doe", phoneNumber:"0705555555", personalIdentityNumber:"12341122-1234", address:"Seventeenth Street", postalCode:"555 55", city:"Eighty-third City");
 
         Student.ListStudents();
@@ -40,6 +71,6 @@ public class Program
 
         Administrator.AddAdministrator(firstName:"Jan", lastName:"Doe", phoneNumber:"0709999999", personalIdentityNumber:"22114321-4321", address:"Forty-first Street", postalCode:"999 99", city:"Fifty-second City", areaOfKnowledge:"Science & History", assignedCourses:specificCourses, dateOfEmployment:DateTime.Now);
 
-        Administrator.ListAdministrators();
+        Administrator.ListAdministrators(); */
     }
 }
