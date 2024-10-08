@@ -23,6 +23,6 @@ public class Student : Person
 
     public override string ToString()
     {
-        return $"Name: {FirstName} {LastName}, Address: {Address}, {City}, {PostalCode}, Contact Information: {PhoneNumber}";
+        return $"Name: {FirstName} {LastName}, Address: {Address}, {PostalCode}, {City}, Contact Information: {PhoneNumber}";
     }
 }
