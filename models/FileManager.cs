@@ -17,19 +17,25 @@ public class FileManager
         PropertyNameCaseInsensitive = true
     };
 
-    public static void WriteToFile<T>(List<T> data, string path)
+    // Had to move the dynamic path to a separate method because otherwise it stopped working
+    private static string GetFilePath<T>()
     {
-        // Dynamically generates the filename specific to the class that is using the function instead of having to declare a separate path in each class
-        /* string fileName = $"{typeof(T).Name}.json";
-        string path = string.Concat(Environment.CurrentDirectory, "/data/", fileName); */
+        string fileName = $"{typeof(T).Name}.json";
+        return string.Concat(Environment.CurrentDirectory, "/data/", fileName);
+    }
 
+    public static void WriteToFile<T>(List<T> data)
+    {
         var json = JsonSerializer.Serialize(data, _writeOptions);
+        string path = GetFilePath<T>();
 
         File.WriteAllText(path, json);
     }
 
-    public static List<T> ReadFromFile<T>(string path)
+    public static List<T> ReadFromFile<T>()
     {   
+        string path = GetFilePath<T>();
+
         // Check to see if the file exists
         if (!File.Exists(path))
         {
