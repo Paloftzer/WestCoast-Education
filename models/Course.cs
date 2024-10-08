@@ -8,35 +8,16 @@ public class Course
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
 
-    public List<Course> Courses { get; set; } = [];
-
-    /* public void AddCourse(string courseId, string title, int durationInWeeks, DateTime startDate, DateTime endDate)
+    public void AddCourse(string courseId, string title, int durationInWeeks, DateTime startDate, DateTime endDate)
     {
-        Course newCourse = new()
-        {
-            CourseId = courseId,
-            Title = title,
-            DurationInWeeks = durationInWeeks,
-            StartDate = startDate,
-            EndDate = endDate,
-        };
+        // path to the course.json file for the ReadFromFile method
+        string path = string.Concat(Environment.CurrentDirectory, "/data/Course.json");
 
-        Courses.Add(newCourse);
-    } */
+        // Reads existing courses from json file so that old information doesn't get overwritten
+        List<Course> Course = FileManager.ReadFromFile<Course>(path);
+        Course.Add(new Course { CourseId = courseId, Title = title, DurationInWeeks = durationInWeeks, StartDate = startDate, EndDate = endDate });
 
-    // Will be unnecessary when I've finished implementing reading and writing from and to files
-    /* public void ListCourses()
-    {
-        Console.WriteLine("List of available Courses:");
-
-        foreach (var course in Courses)
-        {
-            Console.WriteLine(course.ToString());
-        }
+        // Writes the old information as well as the new information back into the file
+        FileManager.WriteToFile(Course, path);
     }
-
-    public override string ToString()
-    {
-        return $"CourseID: {CourseId} - Title: {Title} - Duration: {DurationInWeeks} weeks - Start Date: {StartDate.ToShortDateString()} - End Date: {EndDate.ToShortDateString()}";
-    } */
 }

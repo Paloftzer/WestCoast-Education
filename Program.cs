@@ -6,13 +6,9 @@ public class Program
 {
     static void Main()
     {
-        List<Course> Course =
-        [
-            new Course { CourseId = "1", Title = "Math", DurationInWeeks = 10, StartDate = DateTime.Now, EndDate = DateTime.Now.AddDays(70) },
-            new Course { CourseId = "2", Title = "Science", DurationInWeeks = 8, StartDate = DateTime.Now, EndDate = DateTime.Now.AddDays(56) }
+        Course Course = new();
 
-        ];
-
-        FileManager.WriteToFile(Course);
+        Course.AddCourse(courseId:"1", title:"Math", durationInWeeks:10, startDate:DateTime.Now, endDate:DateTime.Now.AddDays(70));
+        Course.AddCourse(courseId:"2", title:"Science", durationInWeeks:8, startDate:DateTime.Now, endDate:DateTime.Now.AddDays(56));
     }
 }
