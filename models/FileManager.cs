@@ -17,7 +17,7 @@ public class FileManager
         PropertyNameCaseInsensitive = true
     };
 
-    // Had to move the dynamic path to a separate method because otherwise it stopped working
+    // Had to move the dynamic path to a separate method because otherwise it stopped working and i genuinely don't know why but it works now so
     private static string GetFilePath<T>()
     {
         string fileName = $"{typeof(T).Name}.json";

@@ -17,4 +17,21 @@ public class Course
         // Writes the old information as well as the new information back into the file
         FileManager.WriteToFile(Course);
     }
+
+    public void ListCourses()
+    {
+        // Reads existing courses from json file
+        List<Course> courses = FileManager.ReadFromFile<Course>();
+        Console.WriteLine("List of available Courses:");
+
+        foreach (var course in courses)
+        {
+            Console.WriteLine(course.ToString());
+        }
+    }
+
+    public override string ToString()
+    {
+        return $"CourseId: {CourseId} - Title: {Title} - Duration {DurationInWeeks} weeks - Start Date: {StartDate.ToShortDateString()} - End Date: {EndDate.ToShortDateString()}";
+    }
 }
